@@ -16,7 +16,8 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from tracking import views
-
+from django.conf import  settings
+from django.conf.urls.static import static
 
 # Create your views here.
 urlpatterns = [
@@ -28,3 +29,7 @@ urlpatterns = [
     url(r'^create/', views.SnippetList.as_view()),
 
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# urlpatterns += static(settings.STATIC_URL,document_root = settings.STATIC_URL)
+# urlpatterns += static(settings.STATIC_URL, document_root=settings.MEDIA_URL)

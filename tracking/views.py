@@ -9,7 +9,7 @@ from rest_framework.filters import DjangoFilterBackend
 from rest_framework_gis.filters import *
 from rest_framework_gis.pagination import GeoJsonPagination
 
-from  .models import Location
+from  .models import location
 from .serializers import LocationGeoSerializer
 from django.views.decorators.csrf import csrf_exempt
 
@@ -17,18 +17,18 @@ from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 class SnippetList(ListCreateAPIView):
-    queryset = Location.objects.all()
+    queryset = location.objects.all()
     serializer_class = LocationGeoSerializer
 
 
 class SnippetDetail(RetrieveUpdateDestroyAPIView):
-    queryset = Location.objects.all()
+    queryset = location.objects.all()
     serializer_class = LocationGeoSerializer
 
 
 class GeojsonLocationList(RetrieveAPIView):
-    model = Location
-    queryset = Location.objects.all()
+    model = location
+    queryset = location.objects.all()
     serializer_class = LocationGeoSerializer
 
 
